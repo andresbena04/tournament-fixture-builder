@@ -13,18 +13,14 @@ export class FixtureDisplayComponent {
   @Input() fixture: { matchday: number, matches: string[] }[] = [];
   @Output() resetClicked = new EventEmitter<void>();
 
-constructor(
-  private PDFGenerator:PdfGeneratorService
-){}
-  ngOnInit() {
-    console.log(this.fixture)
-    
-  }
+  constructor(
+    private PDFGenerator: PdfGeneratorService
+  ) { }
 
-  donloadPDF(){
+  donloadPDF() {
     this.PDFGenerator.generateFixturePDF(this.fixture);
   }
   onReset() {
-    this.resetClicked.emit(); 
+    this.resetClicked.emit();
   }
 }
