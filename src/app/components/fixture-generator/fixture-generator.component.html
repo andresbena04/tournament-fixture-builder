@@ -21,7 +21,7 @@
             </app-fixture-options>
     
             <div class="flex justify-end">
-                <button (click)="goToNextStep()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-4">
+                <button (click)="goToNextStep()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-4 cursor-pointer">
                     Siguiente
                 </button>
             </div>
@@ -32,12 +32,12 @@
         <ng-container>
             <app-team-form [numberOfTeams]="numberOfTeams" (teamNamesChange)="updateTeamNames($event)">
             </app-team-form>
-            <div class="flex gap-4 mt-4">
-                <button (click)="goToBackStep()" class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">
+            <div class="flex gap-4 mt-4 justify-between">
+                <button (click)="goToBackStep()" class="bg-gray-500 text-black px-4 py-2 rounded hover:bg-gray-600 cursor-pointer">
                     Volver
                 </button>
     
-                <button (click)="goToNextStep()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <button (click)="goToNextStep()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer">
                     Siguiente
                 </button>
             </div>
@@ -45,41 +45,65 @@
         }
         <!-- Paso 2 alternativo: Si no hay personalización de nombres -->
         @if (step === 2 && !useCustomNames) {
-        <ng-container>
-            <div class="text-center">
-                <p class="text-lg text-gray-700 mb-4">Se usarán nombres por defecto: Equipo 1, Equipo 2...</p>
-                <div class="flex gap-4 justify-between">
-                    <button (click)="goToBackStep()" class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">
-                        Volver
+            <ng-container>
+                <div class="text-center">
+                  <h2 class="text-2xl font-semibold text-gray-800 mb-2">Nombres automáticos asignados</h2>
+                  <p class="text-lg text-gray-700 mb-4">
+                    Se utilizarán nombres por defecto para los equipos: <strong>Equipo 1, Equipo 2, ...</strong>
+                  </p>
+                  
+                  <p class="text-sm text-gray-600 mb-6">
+                    Si prefieres personalizar los nombres, puedes volver atrás y activarlo.
+                  </p>
+              
+                  <div class="flex gap-4 justify-center">
+                    <button
+                      (click)="goToBackStep()"
+                      class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 cursor-pointer">
+                      Personalizar nombres
                     </button>
-    
-                    <button (click)="goToNextStep()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-                        Siguiente
+              
+                    <button
+                      (click)="goToNextStep()"
+                      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 cursor-pointer">
+                      Continuar
                     </button>
+                  </div>
                 </div>
-            </div>
-        </ng-container>
+              </ng-container>
+              
         }
     
     
         <!-- Paso 3: Generar fixture -->
         @if (step === 3) {
-        <ng-container>
-            <div class="text-center space-y-4">
-                <p>Todo listo para generar el fixture.</p>
-    
-                <div class="flex gap-4 justify-between  ">
-                    <button (click)="goToBackStep()" class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">
-                        Volver
+            <ng-container>
+                <div class="text-center space-y-4">
+                  <h2 class="text-2xl font-semibold text-gray-800 mb-2">Todo listo para generar el Fixture</h2>
+                  <p class="text-lg text-gray-700 mb-4">
+                    Has completado todos los pasos. Estás a punto de generar el fixture de la competencia.
+                  </p>
+              
+                  <p class="text-sm text-gray-600 mb-6">
+                    Si deseas revisar o modificar alguna opción, puedes volver atrás antes de generar el fixture.
+                  </p>
+              
+                  <div class="flex gap-4 justify-center">
+                    <button
+                      (click)="goToBackStep()"
+                      class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 cursor-pointer">
+                      Volver a configurar
                     </button>
-    
-                    <button (click)="generateFixture(); step = 4"
-                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-                        Generar Fixture
+              
+                    <button
+                      (click)="generateFixture(); step = 4"
+                      class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer">
+                      Generar Fixture
                     </button>
+                  </div>
                 </div>
-            </div>
-        </ng-container>
+              </ng-container>
+              
     
         }
     
