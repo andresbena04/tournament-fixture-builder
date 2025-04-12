@@ -19,7 +19,7 @@ export class PdfGeneratorService {
       // Tabla con los partidos
       autoTable(doc, {
         startY: 30,
-        head: [['Partido']],
+        head: [['Partidos']],
         body: day.matches.map((match) => [match]),
         styles: {
           fontSize: 12,
