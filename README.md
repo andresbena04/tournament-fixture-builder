@@ -1,27 +1,34 @@
-# MatchMaker
+# 🏆 TournamentX
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+Generador de fixtures para competiciones deportivas o de cualquier índole. Configura tus equipos, define si es ida y vuelta, personaliza nombres y obtén un calendario organizado, exportable en PDF.
 
-## Development server
+## [🔗 Preview](https://tournamentxapp.vercel.app/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 📸 Vista previa
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+(Agrega aquí capturas de pantalla cuando tengas)
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🧑‍💻 Tecnologías
+- [Angular 17+](https://angular.io/)
+- [TailwindCSS](https://tailwindcss.com/)
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🛠️ Instalación y ejecución
 
-## Running end-to-end tests
+```bash
+# Clona el repositorio
+git clone https://github.com/andresbena04/tournament-fixture-builder.git
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Entra al directorio
+cd tournament-fixture-builder
 
-## Further help
+# Instala dependencias
+npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Ejecuta en local
+ng serve 
