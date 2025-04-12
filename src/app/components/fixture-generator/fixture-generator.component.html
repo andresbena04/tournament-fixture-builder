@@ -1,0 +1,94 @@
+<section>
+    <div class="p-6 mx-auto">
+        <div class="text-center">
+            <h1 class="text-4xl font-extrabold text-indigo-600 mb-2 drop-shadow-lg">
+                TournamentX
+            </h1>
+        </div>
+       <hr class="mb-3 mt-3">
+        @if (step === 1) {
+        <ng-container>
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-extrabold text-gray-700 mb-2">
+                    ¡Crea tu Fixture de Competencia!
+                </h2>
+                <p class="text-lg text-gray-700">
+                    Configura tus equipos, personaliza sus nombres y genera un fixture listo para la acción.
+                </p>
+            </div>
+            <app-fixture-options [(nameCompetetion)]="nameCompetetion" [(numberOfTeams)]="numberOfTeams" [(useCustomNames)]="useCustomNames"
+                [(homeAndAway)]="homeAndAway">
+            </app-fixture-options>
+    
+            <div class="flex justify-end">
+                <button (click)="goToNextStep()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-4">
+                    Siguiente
+                </button>
+            </div>
+        </ng-container>
+        }
+        <!-- Paso 2: Personalizar nombres -->
+        @if (step === 2 && useCustomNames) {
+        <ng-container>
+            <app-team-form [numberOfTeams]="numberOfTeams" (teamNamesChange)="updateTeamNames($event)">
+            </app-team-form>
+            <div class="flex gap-4 mt-4">
+                <button (click)="goToBackStep()" class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">
+                    Volver
+                </button>
+    
+                <button (click)="goToNextStep()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                    Siguiente
+                </button>
+            </div>
+        </ng-container>
+        }
+        <!-- Paso 2 alternativo: Si no hay personalización de nombres -->
+        @if (step === 2 && !useCustomNames) {
+        <ng-container>
+            <div class="text-center">
+                <p class="text-lg text-gray-700 mb-4">Se usarán nombres por defecto: Equipo 1, Equipo 2...</p>
+                <div class="flex gap-4 justify-between">
+                    <button (click)="goToBackStep()" class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">
+                        Volver
+                    </button>
+    
+                    <button (click)="goToNextStep()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+        }
+    
+    
+        <!-- Paso 3: Generar fixture -->
+        @if (step === 3) {
+        <ng-container>
+            <div class="text-center space-y-4">
+                <p>Todo listo para generar el fixture.</p>
+    
+                <div class="flex gap-4 justify-between  ">
+                    <button (click)="goToBackStep()" class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400">
+                        Volver
+                    </button>
+    
+                    <button (click)="generateFixture(); step = 4"
+                        class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                        Generar Fixture
+                    </button>
+                </div>
+            </div>
+        </ng-container>
+    
+        }
+    
+        <!-- Paso 4: Mostrar resultados -->
+        @if (step === 4) {
+        <ng-container>
+            <app-fixture-display [fixture]="fixture" (resetClicked)="reset()"></app-fixture-display>
+        </ng-container>
+        }
+    
+    </div>
+</section>

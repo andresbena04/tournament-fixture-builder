@@ -1,0 +1,27 @@
+<div class="mb-6 text-center">
+  <div class="text-center mb-8">
+    <h1 class="text-2xl font-extrabold text-gray-700 mb-2">
+        ¡Forma tu Equipo Perfecto!
+    </h1>
+    <p class="text-lg text-gray-600">
+        Ingresa los nombres de los equipos que competirán. ¡La gloria los espera!
+    </p>
+</div>
+  <div class="space-y-2">
+    <label class="block text-lg">Nombres de los equipos:</label>
+    <form [formGroup]="form">
+      <div formArrayName="teams">
+        <div class="space-y-3">
+            @for (item of teamControls.controls; track item; let i = $index) {
+                <input
+                [formControlName]="i"
+                (input)="emitChange()"
+                placeholder="Nombre del equipo {{ i + 1 }}"
+                class="w-full p-2 border rounded" />
+            }
+          
+        </div>
+      </div>
+    </form>
+  </div>
+  

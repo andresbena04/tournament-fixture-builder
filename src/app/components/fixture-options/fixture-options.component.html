@@ -1,0 +1,32 @@
+<div class="space-y-2">
+    <div>
+        <label class="block font-medium">Nombre de la competición</label>
+        <input type="text" [(ngModel)]="nameCompetetion" (ngModelChange)="nameCompetetionChange.emit($event)"
+            class="w-full p-2 border rounded" />
+    </div>
+    <div>
+        <label class="block font-medium">Número de equipos:</label>
+        <input type="number" min="2" [(ngModel)]="numberOfTeams" (ngModelChange)="numberOfTeamsChange.emit($event)"
+            class="w-full p-2 border rounded" />
+    </div>
+    <div>
+        <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer" [(ngModel)]="useCustomNames"
+                (ngModelChange)="useCustomNamesChange.emit($event)" />
+            <div
+                class="group peer bg-white rounded-full duration-300 w-8 h-4 ring-2 ring-gray-500 after:duration-300 after:bg-gray-500 peer-checked:after:bg-blue-500 peer-checked:ring-blue-500 after:rounded-full after:absolute after:h-3 after:w-3 after:top-1.5 after:left-0.5 after:flex after:justify-center after:items-center peer-checked:after:translate-x-4 peer-hover:after:scale-95">
+            </div>
+            <span class="ms-3">Personalizar nombres</span>
+        </label>
+    </div>
+    <div>
+        <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer" [(ngModel)]="homeAndAway"
+                (ngModelChange)="homeAndAwayChange.emit($event)" />
+            <div
+                class="group peer bg-white rounded-full duration-300 w-8 h-4 ring-2 ring-gray-500 after:duration-300 after:bg-gray-500 peer-checked:after:bg-blue-500 peer-checked:ring-blue-500 after:rounded-full after:absolute after:h-3 after:w-3 after:top-1.5 after:left-0.5 after:flex after:justify-center after:items-center peer-checked:after:translate-x-4 peer-hover:after:scale-95">
+            </div>
+            <span class="ms-3">Ida y vuelta</span>
+        </label>
+    </div>
+</div>
