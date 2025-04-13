@@ -49,21 +49,27 @@ export class FixtureGeneratorComponent {
       step: this.step
     });
   }
-  goToBackStep(){
-    if(this.step > 1){
+  goToBackStep() {
+    if (this.step > 1) {
       this.step--;
       this.saveCurrentState();
     }
   }
   goToNextStep() {
-    if(this.step === 1 && this.nameCompetetion.trim() === '') {
-      alert('Por favor, completa el nombre de la competición.');
-      return;
+    if (this.step === 1) {
+      if (this.nameCompetetion.trim() === '') {
+        alert('Debes ingresar un nombre para la competición.');
+        return;
+      }
+      if (this.numberOfTeams < 2 || this.numberOfTeams > 36) {
+        alert('El número de equipos debe estar entre 2 y 36.');
+        return;
+      }
     }
     if (this.step === 2 && this.useCustomNames) {
       const filled = this.teamNames.filter(name => name.trim() !== '').length;
       if (filled < this.numberOfTeams) {
-        alert('Por favor, completa todos los nombres de los equipos.');
+        alert('Completa todos los nombres de los equipos antes de continuar.');
         return;
       }
     }
