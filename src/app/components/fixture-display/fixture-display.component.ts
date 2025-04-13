@@ -12,6 +12,7 @@ export class FixtureDisplayComponent {
 
   @Input() fixture: { matchday: number, matches: string[] }[] = [];
   @Output() resetClicked = new EventEmitter<void>();
+  @Output() backClicked = new EventEmitter<void>();
 
   constructor(
     private PDFGenerator: PdfGeneratorService
@@ -19,6 +20,9 @@ export class FixtureDisplayComponent {
 
   donloadPDF() {
     this.PDFGenerator.generateFixturePDF(this.fixture);
+  }
+  onBackStep() {
+    this.backClicked.emit();
   }
   onReset() {
     this.resetClicked.emit();

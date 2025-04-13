@@ -110,7 +110,7 @@
         <!-- Paso 4: Mostrar resultados -->
         @if (step === 4) {
         <ng-container>
-            <app-fixture-display [fixture]="fixture" (resetClicked)="reset()"></app-fixture-display>
+            <app-fixture-display [fixture]="fixture" (resetClicked)="reset()" (backClicked)="goToBackStep()"></app-fixture-display>
         </ng-container>
         }
     
