@@ -32,7 +32,7 @@
         <ng-container>
             <app-team-form [numberOfTeams]="numberOfTeams"  [initialNames]="teamNames"  (teamNamesChange)="updateTeamNames($event)">
             </app-team-form>
-            <div class="flex gap-4 mt-4 justify-between">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
                 <button (click)="goToBackStep()" class="bg-gray-500 text-black px-4 py-2 rounded hover:bg-gray-600 cursor-pointer">
                     Volver
                 </button>
@@ -56,7 +56,7 @@
                     Si prefieres personalizar los nombres, puedes volver atrás y activarlo.
                   </p>
               
-                  <div class="flex gap-4 justify-center">
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
                     <button
                       (click)="goToBackStep()"
                       class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 cursor-pointer">
@@ -88,7 +88,7 @@
                     Si deseas revisar o modificar alguna opción, puedes volver atrás antes de generar el fixture.
                   </p>
               
-                  <div class="flex gap-4 justify-center">
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center mt-4">
                     <button
                       (click)="goToBackStep()"
                       class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 cursor-pointer">
