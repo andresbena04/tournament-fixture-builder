@@ -6,12 +6,6 @@ Generador de fixtures para competiciones deportivas o de cualquier índole. Conf
 
 ---
 
-## 📸 Vista previa
-
-(Agrega aquí capturas de pantalla cuando tengas)
-
----
-
 ## 🧑‍💻 Tecnologías
 - [Angular 17+](https://angular.io/)
 - [TailwindCSS](https://tailwindcss.com/)
