@@ -4,6 +4,7 @@ import { FixtureOptionsComponent } from '../fixture-options/fixture-options.comp
 import { TeamFormComponent } from '../team-form/team-form.component';
 import { FixtureService } from '../../services/fixture.service';
 import { StatePersistenceService } from '../../services/state-persistence.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-fixture-generator',
@@ -24,7 +25,8 @@ export class FixtureGeneratorComponent {
 
   constructor(
     private fixtureService: FixtureService,
-    private stateService: StatePersistenceService
+    private stateService: StatePersistenceService,
+    private notificationService: NotificationService
   ) {
     const saved = this.stateService.loadState();
     if (saved) {
@@ -58,18 +60,18 @@ export class FixtureGeneratorComponent {
   goToNextStep() {
     if (this.step === 1) {
       if (this.nameCompetetion.trim() === '') {
-        alert('Debes ingresar un nombre para la competición.');
+        this.notificationService.notifyError('Debes ingresar un nombre para la competición.')
         return;
       }
       if (this.numberOfTeams < 2 || this.numberOfTeams > 36) {
-        alert('El número de equipos debe estar entre 2 y 36.');
+        this.notificationService.notifyError('El número de equipos debe estar entre 2 y 36.')
         return;
       }
     }
     if (this.step === 2 && this.useCustomNames) {
       const filled = this.teamNames.filter(name => name.trim() !== '').length;
       if (filled < this.numberOfTeams) {
-        alert('Completa todos los nombres de los equipos antes de continuar.');
+        this.notificationService.notifyError('Completa todos los nombres de los equipos antes de continuar.')
         return;
       }
     }
@@ -78,14 +80,19 @@ export class FixtureGeneratorComponent {
   }
 
   reset() {
-    this.step = 1;
-    this.nameCompetetion = '';
-    this.numberOfTeams = 4;
-    this.useCustomNames = false;
-    this.homeAndAway = false;
-    this.teamNames = [];
-    this.fixture = [];
-    this.saveCurrentState();
+    this.notificationService.showConfirm('¿Estás seguro de que quieres reiniciar el fixture? Se perderán todos los datos actuales.')
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.step = 1;
+          this.nameCompetetion = '';
+          this.numberOfTeams = 4;
+          this.useCustomNames = false;
+          this.homeAndAway = false;
+          this.teamNames = [];
+          this.fixture = [];
+          this.saveCurrentState();
+        }
+      })
   }
   updateTeamNames(names: string[]) {
     this.teamNames = names;

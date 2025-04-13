@@ -33,10 +33,7 @@ export class FixtureDisplayComponent {
     this.backClicked.emit();
   }
   onReset() {
-    const confirmed = confirm("¿Estás seguro de que quieres reiniciar el fixture? Se perderán todos los datos actuales.");
-    if (confirmed) {
-      this.resetClicked.emit();
-    }
+    this.resetClicked.emit();
   }
   
 }
