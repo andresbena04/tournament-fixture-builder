@@ -15,6 +15,7 @@ import { NotificationService } from '../../services/notification.service';
 })
 export class FixtureGeneratorComponent {
 
+  loading: boolean = false;
   nameCompetetion!: string
   numberOfTeams = 4;
   useCustomNames = false;
@@ -99,12 +100,14 @@ export class FixtureGeneratorComponent {
   }
 
   generateFixture() {
+    this.loading = true
     this.fixture = this.fixtureService.generateFixture(
       this.numberOfTeams,
       this.useCustomNames ? this.teamNames : undefined,
       this.homeAndAway
     );
     this.step = 4
+    this.loading = false
     this.saveCurrentState();
   }
 }
