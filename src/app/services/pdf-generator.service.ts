@@ -1,20 +1,25 @@
 import { Injectable } from '@angular/core';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { StatePersistenceService } from './state-persistence.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PdfGeneratorService {
+  constructor(private stateService: StatePersistenceService) {}
   generateFixturePDF(fixture: { matchday: number; matches: string[] }[]): void {
     const doc = new jsPDF();
 
+    const state = this.stateService.loadState();
+    const competitionName = state?.nameCompetetion || 'Competición';
+    
     fixture.forEach((day, index) => {
       if (index !== 0) doc.addPage();
 
       // Título de la jornada
       doc.setFontSize(18);
-      doc.text(`Calendario - jornada ${day.matchday}`, 14, 20);
+      doc.text(`${competitionName} - Jornada ${day.matchday}`, 14, 20);
 
       // Tabla con los partidos
       autoTable(doc, {

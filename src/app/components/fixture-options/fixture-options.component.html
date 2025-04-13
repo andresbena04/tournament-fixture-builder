@@ -1,7 +1,7 @@
 <div class="space-y-2">
     <div>
         <label class="block font-medium">Nombre de la competición</label>
-        <input type="text" [(ngModel)]="nameCompetetion" (ngModelChange)="nameCompetetionChange.emit($event)"
+        <input type="text"  placeholder="Ej. Copa Libertadores, Liga Intergaláctica..." [(ngModel)]="nameCompetetion" (ngModelChange)="nameCompetetionChange.emit($event)"
             class="w-full p-2 border rounded" />
     </div>
     <div>
