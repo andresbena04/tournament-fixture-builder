@@ -30,7 +30,7 @@
         <!-- Paso 2: Personalizar nombres -->
         @if (step === 2 && useCustomNames) {
         <ng-container>
-            <app-team-form [numberOfTeams]="numberOfTeams" (teamNamesChange)="updateTeamNames($event)">
+            <app-team-form [numberOfTeams]="numberOfTeams"  [initialNames]="teamNames"  (teamNamesChange)="updateTeamNames($event)">
             </app-team-form>
             <div class="flex gap-4 mt-4 justify-between">
                 <button (click)="goToBackStep()" class="bg-gray-500 text-black px-4 py-2 rounded hover:bg-gray-600 cursor-pointer">

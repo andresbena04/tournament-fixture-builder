@@ -12,6 +12,7 @@ import { FormBuilder, FormArray, ReactiveFormsModule, FormGroup } from '@angular
 export class TeamFormComponent implements OnChanges {
 
   @Input() numberOfTeams = 4;
+  @Input() initialNames: string[] = [];
   @Output() teamNamesChange = new EventEmitter<string[]>();
 
   form: FormGroup;
@@ -35,11 +36,13 @@ export class TeamFormComponent implements OnChanges {
   private setTeamControls(count: number) {
     const teamsArray = this.fb.array([]);
     for (let i = 0; i < count; i++) {
-      teamsArray.push(this.fb.control(''));
+      const name = this.initialNames[i] || '';
+      teamsArray.push(this.fb.control(name));
     }
     this.form.setControl('teams', teamsArray);
     this.emitChange();
   }
+  
 
   emitChange() {
     this.teamNamesChange.emit(this.teamControls.value);
