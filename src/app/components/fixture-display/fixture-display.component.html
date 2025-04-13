@@ -5,10 +5,9 @@
           <h2 class="text-3xl font-semibold text-green-600">¡Fixture generado con éxito!</h2>
           <p class="text-lg text-gray-500 mt-2">Ahora puedes revisar los partidos y, si lo deseas, descargarlos en formato PDF.</p>
         </div>
-  
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-rows-3 xl:grid-cols-4 gap-6">
+        <div class="grid justify-center sm:justify-between grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-rows-3 xl:grid-cols-4 gap-6">
           @for (matchday of fixture; track matchday) {
-            <div class="min-w-[280px] max-w-full border rounded-2xl p-5 bg-gradient-to-r from-gray-400 to-gray-500 shadow-md hover:shadow-lg transition-shadow">
+            <div class="max-w-full border rounded-2xl p-5 bg-gradient-to-r from-gray-400 to-gray-500 shadow-md hover:shadow-lg transition-shadow">
               <h3 class="text-xl font-bold text-gray-800 mb-3">Jornada {{ matchday.matchday }}</h3>
               <ul class="space-y-2 text-sm text-gray-700">
                 @for (match of matchday.matches; track match) {
